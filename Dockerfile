@@ -1,11 +1,14 @@
 FROM python:3.6.3
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/
 
-COPY requirements.txt ./
+COPY src/ ./
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+WORKDIR /usr/src/projectone/
+
+RUN python manage.py startapp oficina
 
 EXPOSE 8000
 
