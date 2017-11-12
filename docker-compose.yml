@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    image: krixapolinario/django-project-one:local
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src/projectone:/usr/src/projectone
