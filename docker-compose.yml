@@ -3,7 +3,7 @@ version: '2'
 services:
   app:
     build: .
-    image: krixapolinario/django-project-one:local
+    image: krixapolinario/django-project-one:dev
     ports:
       - 8000:8000
     volumes:
