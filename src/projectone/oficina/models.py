@@ -51,6 +51,12 @@ class Service(models.Model):
     return self.name
 
 class Quotation(models.Model):
+  STATE=(
+        ('approved', 'aprovado'),
+        ('disapproved', 'desaprovado'),
+  )
+  date = models.DateTimeField('Data', auto_now_add=True)
+  token = models.CharField('Token',max_length=20)
   client = models.ForeignKey(Client, on_delete=models.CASCADE)
   vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
   items = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -58,15 +64,19 @@ class Quotation(models.Model):
   validade = models.CharField('Validade', max_length=2)
   payment = models.CharField('Token',max_length=20)
   description = models.TextField('Observacoes', max_length=200)
-  date = models.DateTimeField('Data', auto_now_add=True)
-  token = models.CharField('Token',max_length=20)
+  state = models.CharField('Situacao', max_length=11, choices=STATE)
 
   def __str__(self):
     return self.id
 
 class ServiceOrder(models.Model):
-  description = models.TextField('Observacoes', max_length=200)
+  STATE=(
+        ('payed', 'pago'),
+        ('unpayed', 'nao pago'),
+  )
   date = models.DateTimeField('Data', auto_now_add=True)
+  description = models.TextField('Observacoes', max_length=200)
+  state = models.CharField('Situacao', max_length=10, choices=STATE)
 
   def __str__(self):
     return self.date

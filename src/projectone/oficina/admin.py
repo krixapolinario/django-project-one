@@ -25,11 +25,11 @@ class ServiceAdmin(admin.ModelAdmin):
 admin.site.register(Service, ServiceAdmin)
 
 class QuotationAdmin(admin.ModelAdmin):
-    fields = ['client', 'vehicle', 'validade', 'payment', 'items', 'services', 'description']
+    fields = ['date', 'client', 'vehicle', 'validade', 'payment', 'items', 'services', 'description', 'state']
 
 admin.site.register(Quotation, QuotationAdmin)
 
 class ServiceOrderAdmin(admin.ModelAdmin):
-    fields = ['date']
+    fields = ['date', 'description', 'state']
 
 admin.site.register(ServiceOrder, ServiceOrderAdmin)
