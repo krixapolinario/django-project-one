@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Client, Vehicle, Product, Service, Quotation
+from .models import Client, Vehicle, Product, Service, Quotation, ServiceOrder
 
 #@admin.register(Client, Vehicle, Product, Service, Quotation)
 
@@ -30,6 +30,6 @@ class QuotationAdmin(admin.ModelAdmin):
 admin.site.register(Quotation, QuotationAdmin)
 
 class ServiceOrderAdmin(admin.ModelAdmin):
-    fields = ['client', 'vehicle', 'validade', 'payment', 'items', 'services', 'description']
+    fields = ['date']
 
 admin.site.register(ServiceOrder, ServiceOrderAdmin)
