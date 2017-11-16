@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Client, Vehicle, Product, Service, Quotation, ServiceOrder
+from .models import Client, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
 
 #@admin.register(Client, Vehicle, Product, Service, Quotation)
 
@@ -24,8 +24,13 @@ class ServiceAdmin(admin.ModelAdmin):
 
 admin.site.register(Service, ServiceAdmin)
 
+class PaymentMethodAdmin(admin.ModelAdmin):
+    fields = ['method', 'description']
+
+admin.site.register(PaymentMethod, PaymentMethodAdmin)
+
 class QuotationAdmin(admin.ModelAdmin):
-    fields = ['client', 'vehicle', 'validade', 'payment', 'items', 'services', 'description', 'state']
+    fields = ['client', 'vehicle', 'validity', 'payment', 'items', 'services', 'description', 'state']
 
 admin.site.register(Quotation, QuotationAdmin)
 
