@@ -20,25 +20,33 @@ from .models import Client, Vehicle, Product, Service, PaymentMethod, Quotation,
 
 def loginview(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/oficina/')
+        return HttpResponseRedirect('/inicio/')
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('/oficina/')
+            return HttpResponseRedirect('/inicio/')
         else:
             messages.warning(request, 'Credenciais incorretas.')
             return render(request, 'login.html', {})
     return render(request, 'login.html', {})
 
-def oficinaview(request):
+def homeview(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     username = request.user.username
     if request.method == 'POST':
-        return render(request, 'oficina.html')
+        return render(request, 'home.html')
+    return render(request, 'login.html', {})
+
+def registerview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    if request.method == 'POST':
+        return render(request, 'newclient.html')
     return render(request, 'login.html', {})
 
 def logoutview(request):
