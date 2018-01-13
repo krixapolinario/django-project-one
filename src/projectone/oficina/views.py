@@ -38,7 +38,7 @@ def oficinaview(request):
         return HttpResponseRedirect('/login/')
     username = request.user.username
     if request.method == 'POST':
-        return render(request, 'oficina.html', username)
+        return render(request, 'oficina.html')
     return render(request, 'login.html', {})
 
 def logoutview(request):
