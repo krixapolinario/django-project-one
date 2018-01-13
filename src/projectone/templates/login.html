@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<form action="" method="POST" class="form-signin">
+  {% csrf_token %}
+  <label for="inputText" class="sr-only">Usuario</label>
+  <input type="inputText" id="inputText" name="username" value="{{ username }}" class="form-control" placeholder="Usuario" required>
+  </BR><label for="inputPassword" class="sr-only">Senha</label>
+  <input type="password" id="inputPassword" name="password" value="{{ password }}" class="form-control" placeholder="Senha" required>
+  </BR><button type="submit" value="Acessar" class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
+</form>
+
+{% endblock content %}
