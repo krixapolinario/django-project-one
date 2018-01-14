@@ -8,8 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import registerClient, registerVehicle
-from .models import Client, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
+from .forms import registerClient, registerSupplier, registerVehicle
+from .models import Client, Supplier, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
 
 def loginview(request):
     if request.user.is_authenticated():
@@ -47,13 +47,31 @@ def newclientview(request):
         pass
     return render(request, 'newclient.html', context)
 
+def newsupplierview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    form = registerSupplier(data=request.POST)
+    context = {
+            'form' : form,
+            'username' : username,
+        }
+    if request.method == 'POST':
+        pass
+    return render(request, 'newsupplier.html', context)
+
 def newvehicleview(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     username = request.user.username
+    form = registerVehicle(data=request.POST)
+    context = {
+            'form' : form,
+            'username' : username,
+        }
     if request.method == 'POST':
         pass
-    return render(request, 'newvehicle.html')
+    return render(request, 'newvehicle.html', context)
 
 def newproductview(request):
     if not request.user.is_authenticated():

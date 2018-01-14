@@ -1,13 +1,18 @@
 from django.contrib import admin
 
-from .models import Client, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
+from .models import Client, Supplier, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
 
 #@admin.register(Client, Vehicle, Product, Service, Quotation)
 
 class ClientAdmin(admin.ModelAdmin):
-    fields = ['cpf', 'name', 'email', 'phonenumber', 'address_street', 'address_city', 'address_state']
+    fields = ['cpf', 'name', 'email', 'phone_number1', 'phone_number2', 'address', 'city', 'state', 'zipcode']
 
 admin.site.register(Client, ClientAdmin)
+
+class SupplierAdmin(admin.ModelAdmin):
+    fields = ['cpf_cnpj', 'name', 'email', 'phone_number1', 'phone_number2', 'address', 'city', 'state', 'zipcode']
+
+admin.site.register(Supplier, SupplierAdmin)
 
 class VehicleAdmin(admin.ModelAdmin):
     fields = ['license_plate', 'owner', 'brand', 'model', 'year', 'kilometer', 'chassis']

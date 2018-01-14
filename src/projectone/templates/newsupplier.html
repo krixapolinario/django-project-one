@@ -6,7 +6,7 @@
 
 <div class="page-header">
   <center>
-  <h3>Cadastrar Novo Cliente</h3>
+  <h3>Cadastrar Novo Fornecedor</h3>
 </center>
 </div>
 
@@ -14,16 +14,14 @@
   {% csrf_token %}
   <div class="form-row">
     <div class="form-group col-md-6">
-      {{ form.cpf }}
+      {{ form.cpf_cnpj }}
     </div>
     <div class="form-group col-md-6">
       {{ form.email }}
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      {{ form.name }}
-    </div>
+  <div class="form-group col-md-12">
+    {{ form.name }}
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">

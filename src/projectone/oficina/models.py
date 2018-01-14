@@ -2,13 +2,32 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 
 class Client(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=120)
   email = models.EmailField()
   cpf = models.CharField(max_length=20)
-  phonenumber = models.CharField(max_length=20)
-  address_street = models.CharField(max_length=100)
-  address_city = models.CharField(max_length=50)
-  address_state = models.CharField(max_length=50)
+  phone_number1 = models.CharField(max_length=20)
+  phone_number2 = models.CharField(blank=True, max_length=20)
+  address = models.CharField(blank=True, max_length=120)
+  neighborhood = models.CharField(blank=True, max_length=50)
+  city = models.CharField(max_length=50)
+  state = models.CharField(max_length=50)
+  zipcode = models.CharField(blank=True, max_length=10)
+  date_joined = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return self.name
+
+class Supplier(models.Model):
+  name = models.CharField(max_length=120)
+  email = models.EmailField()
+  cpf_cnpj = models.CharField(max_length=20)
+  phone_number1 = models.CharField(max_length=20)
+  phone_number2 = models.CharField(blank=True, max_length=20)
+  address = models.CharField(blank=True, max_length=120)
+  neighborhood = models.CharField(blank=True, max_length=50)
+  city = models.CharField(max_length=50)
+  state = models.CharField(max_length=50)
+  zipcode = models.CharField(blank=True, max_length=10)
   date_joined = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
@@ -19,7 +38,7 @@ class Vehicle(models.Model):
   brand = models.CharField(max_length=50)
   model = models.CharField(max_length=50)
   year = models.CharField(max_length=4)
-  license_plate = models.CharField(max_length=8)
+  license_plate = models.CharField(max_length=10)
   chassis = models.CharField(max_length=50)
   kilometer = models.CharField(max_length=6)
   date_joined = models.DateTimeField(auto_now_add=True)

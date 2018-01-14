@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^login/', views.loginview, name='login'),
     url(r'^inicio/', views.homeview, name='inicio'),
     url(r'^novocliente/', views.newclientview, name='novocliente'),
+    url(r'^novofornecedor/', views.newsupplierview, name='novofornecedor'),
     url(r'^novocarro/', views.newvehicleview, name='novocarro'),
     url(r'^novoproduto/', views.newproductview, name='novoproduto'),
     url(r'^novoorcamento/', views.newquotationview, name='novoorcamento'),
