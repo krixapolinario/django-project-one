@@ -6,21 +6,33 @@ from crispy_forms.layout import Submit, Layout, Field, Div, MultiField
 
 
 class registerClient(forms.Form):
-    cpf = forms.CharField()
-    name = forms.CharField()
-    email = forms.EmailField()
-    phonenumber = forms.CharField()
-    addressstreet = forms.CharField()
-    addresscity = forms.CharField()
-    addressstate = forms.CharField()
+    cpf = forms.CharField(required=True)
+    name = forms.CharField(
+           max_length=120,
+           label='Nome: ',
+           required=True,
+           widget=forms.TextInput(attrs={
+                  'class':'textinput textInput form-control',
+                  'placeholder':'* Nome Completo',
+                  })
+           )
+    email = forms.EmailField(required=False)
+    phonenumber = forms.CharField(required=True)
+    addressstreet = forms.CharField(required=False)
+    addresscity = forms.CharField(required=False)
+    addressstate = (
+                ('pernambuco','Pernambuco'),
+                ('joaopessoa','Joao Pessoa'),
+                ('riograndedonorte','Rio Grande do Norte'),
+        )
 
 class registerVehicle(forms.Form):
-    licenceplate = forms.CharField()
-    brand = forms.CharField()
-    model = forms.CharField()
-    year = forms.CharField()
-    kilometer = forms.CharField()
-    chassis = forms.CharField()
+    licenceplate = forms.CharField(required=True)
+    brand = forms.CharField(required=True)
+    model = forms.CharField(required=True)
+    year = forms.CharField(required=True)
+    kilometer = forms.CharField(required=True)
+    chassis = forms.CharField(required=False)
 
 #class registerProduct(forms.Form):
 

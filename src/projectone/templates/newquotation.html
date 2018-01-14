@@ -6,7 +6,7 @@
 
 <div class="page-header">
   <center>
-  <h3>Cadastrar Novo Cliente</h3>
+  <h3>Pedido de Orçamento</h3>
 </center>
 </div>
 
@@ -42,10 +42,13 @@
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Estado</label>
-      <select id="addressstate" name="addressstate">
-        {% for option in form.addressstate %}
-          <option value="{{ option.0 }}">{{ option.1 }}</option>
-        {% endfor %}
+      <select id="inputState" class="form-control">
+        <option selected>Pernambuco</option>
+        <option>João Pessoa</option>
+        <option>Rio Grande do Norte</option>
+        <option>Alagoas</option>
+        <option>Bahia</option>
+        <option>Ceará</option>
       </select>
     </div>
   </div>

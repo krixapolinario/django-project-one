@@ -8,14 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.conf import settings
 
-from django.template import Context
-from django.template.loader import render_to_string, get_template
-from django.core.mail import EmailMessage
-
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
+from .forms import registerClient, registerVehicle
 from .models import Client, Vehicle, Product, Service, PaymentMethod, Quotation, ServiceOrder
 
 def loginview(request):
@@ -38,16 +31,53 @@ def homeview(request):
         return HttpResponseRedirect('/login/')
     username = request.user.username
     if request.method == 'POST':
-        return render(request, 'home.html')
-    return render(request, 'login.html', {})
+        pass
+    return render(request, 'home.html')
 
-def registerview(request):
+def newclientview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    form = registerClient(data=request.POST)
+    context = {
+            'form' : form,
+            'username' : username,
+        }
+    if request.method == 'POST':
+        pass
+    return render(request, 'newclient.html', context)
+
+def newvehicleview(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     username = request.user.username
     if request.method == 'POST':
-        return render(request, 'newclient.html')
-    return render(request, 'login.html', {})
+        pass
+    return render(request, 'newvehicle.html')
+
+def newproductview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    if request.method == 'POST':
+        pass
+    return render(request, 'newproduct.html')
+
+def newquotationview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    if request.method == 'POST':
+        pass
+    return render(request, 'newquotation.html')
+
+def newserviceorderview(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    username = request.user.username
+    if request.method == 'POST':
+        pass
+    return render(request, 'newserviceorder.html')
 
 def logoutview(request):
     logout(request)
